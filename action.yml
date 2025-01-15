@@ -33,17 +33,21 @@ runs:
         sdk: stable
 
     - name: Install Dart Globe CLI
+      shell: bash
       run: dart pub global activate globe_cli
 
     - name: Authenticate Dart Globe CLI
+      shell: bash
       run: globe auth login --token ${{ inputs.globe_token }}
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Deploy to Preview
+      shell: bash
       if: ${{ inputs.environment == 'preview' }}
       run: globe deploy --preview --branch ${{ inputs.branch }}
 
     - name: Deploy to Production
+      shell: bash
       if: ${{ inputs.environment == 'production' }}
       run: globe deploy --production --branch ${{ inputs.branch }}

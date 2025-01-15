@@ -25,7 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using Dart Globe
-        uses: your-username/dart-globe-action@v1
+        uses: mastersam07/dart-globe-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           globe_token: ${{ secrets.GLOBE_TOKEN }}
+```
