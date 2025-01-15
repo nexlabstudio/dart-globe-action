@@ -36,19 +36,21 @@ runs:
     - name: Install Dart Globe CLI
       shell: bash
       run: dart pub global activate globe_cli
+    
+    - name: Authenticate to Globe
+      shell: bash
+      if: ${{ inputs.environment == 'preview' }}
+      working-directory: ${{ inputs.working-directory }}
+      run: globe login --token ${{ inputs.globe-token }}
 
     - name: Deploy to Preview
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
       run: globe deploy
-      env:
-        GLOBE_TOKEN: ${{ inputs.globe-token }}
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
       run: globe deploy --prod
-      env:
-        GLOBE_TOKEN: ${{ inputs.globe-token }}

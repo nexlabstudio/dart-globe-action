@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using Dart Globe
-        uses: mastersam07/dart-globe-action@v0.2
+        uses: mastersam07/dart-globe-action@v0.21
         with:
           entrypoint: build/bin/server.dart
           globe_token: ${{ secrets.GLOBE_TOKEN }}
