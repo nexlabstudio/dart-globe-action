@@ -1,0 +1,48 @@
+name: "Deploy with Dart Globe"
+description: "A reusable GitHub Action to deploy Dart and Flutter applications using Dart Globe CLI"
+author: "Mastersam07"
+branding:
+  icon: "upload-cloud"
+  color: "blue"
+
+inputs:
+  github_token:
+    description: "GitHub Token for authentication"
+    required: true
+  globe_token:
+    description: "Authentication token for Globe CLI"
+    required: true
+  environment:
+    description: "Deployment environment: 'preview' or 'production'"
+    required: true
+  branch:
+    description: "Branch to deploy from"
+    default: "main"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Dart SDK
+      uses: dart-lang/setup-dart@v1
+      with:
+        sdk: stable
+
+    - name: Install Dart Globe CLI
+      run: dart pub global activate globe_cli
+
+    - name: Authenticate Dart Globe CLI
+      run: globe auth login --token ${{ inputs.globe_token }}
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+
+    - name: Deploy to Preview
+      if: ${{ inputs.environment == 'preview' }}
+      run: globe deploy --preview --branch ${{ inputs.branch }}
+
+    - name: Deploy to Production
+      if: ${{ inputs.environment == 'production' }}
+      run: globe deploy --production --branch ${{ inputs.branch }}
