@@ -8,7 +8,7 @@ This GitHub Action allows you to deploy Dart and Flutter applications using the 
 |----------------|------------------------------------------|----------|---------|
 | `github_token` | GitHub Token for authentication          | Yes      |         |
 | `globe_token`  | Authentication token for Dart Globe CLI  | Yes      |         |
-| `environment`  | Env to deploy ('preview' | 'production') | No       |`preview`|
+| `environment`  | Env to deploy (preview or production)    | No       |`preview`|
 | `branch`       | Branch to deploy from                    | No       | `main`  |
 
 ## Example Usage
