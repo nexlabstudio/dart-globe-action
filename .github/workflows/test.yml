@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Dart Globe Action
-        uses: mastersam07/dart-globe-action@v0
+        uses: mastersam07/dart-globe-action@v0.1
         with:
           branch: "master"
