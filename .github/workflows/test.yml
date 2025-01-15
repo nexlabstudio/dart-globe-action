@@ -11,5 +11,3 @@ jobs:
     steps:
       - name: Run Dart Globe Action
         uses: mastersam07/dart-globe-action@v0.1
-        with:
-          branch: "master"

@@ -10,10 +10,6 @@ inputs:
     description: "Deployment environment: 'preview' or 'production'"
     default: "preview"
     required: false
-  branch:
-    description: "Branch to deploy from"
-    default: "main"
-    required: false
   working-directory:
     description: The working directory in which to run the deployment from
     required: false
@@ -38,10 +34,10 @@ runs:
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --preview --branch ${{ inputs.branch }}
+      run: globe deploy
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --production --branch ${{ inputs.branch }}
+      run: globe deploy --prod
