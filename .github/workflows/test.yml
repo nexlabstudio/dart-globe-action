@@ -13,4 +13,4 @@ jobs:
         uses: mastersam07/dart-globe-action@v0.21
         with:
           entrypoint: build/bin/server.dart
-          globe_token: ${{ secrets.GLOBE_TOKEN }}
+          globe-token: ${{ secrets.GLOBE_TOKEN }}
