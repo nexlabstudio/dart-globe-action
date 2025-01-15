@@ -6,12 +6,6 @@ branding:
   color: "blue"
 
 inputs:
-  github_token:
-    description: "GitHub Token for authentication"
-    required: true
-  globe_token:
-    description: "Authentication token for Globe CLI"
-    required: true
   environment:
     description: "Deployment environment: 'preview' or 'production'"
     default: "preview"
@@ -39,12 +33,6 @@ runs:
     - name: Install Dart Globe CLI
       shell: bash
       run: dart pub global activate globe_cli
-
-    - name: Authenticate Dart Globe CLI
-      shell: bash
-      run: globe auth login --token ${{ inputs.globe_token }}
-      env:
-        GITHUB_TOKEN: ${{ inputs.github_token }}
 
     - name: Deploy to Preview
       shell: bash

@@ -12,6 +12,4 @@ jobs:
       - name: Run Dart Globe Action
         uses: mastersam07/dart-globe-action@v0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          globe_token: ${{ secrets.GLOBE_TOKEN }}
           branch: "master"
