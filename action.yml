@@ -14,6 +14,13 @@ inputs:
     description: The working directory in which to run the deployment from
     required: false
     default: .
+  entrypoint:
+    description: The Dart entrypoint file
+    required: true
+    default: .
+  globe-token:
+    description: "Authentication token for Globe CLI"
+    required: true
 
 runs:
   using: "composite"
@@ -35,9 +42,13 @@ runs:
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
       run: globe deploy
+      env:
+        GLOBE_TOKEN: ${{ inputs.globe-token }}
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
       run: globe deploy --prod
+      env:
+        GLOBE_TOKEN: ${{ inputs.globe-token }}
