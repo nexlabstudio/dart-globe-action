@@ -39,7 +39,6 @@ runs:
     
     - name: Authenticate to Globe
       shell: bash
-      if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
       run: globe login --token ${{ inputs.globe-token }}
 
