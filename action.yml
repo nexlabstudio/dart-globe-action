@@ -46,10 +46,10 @@ runs:
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --logs
+      run: globe deploy
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --prod --logs
+      run: globe deploy --prod
