@@ -14,10 +14,6 @@ inputs:
     description: The working directory in which to run the deployment from
     required: false
     default: .
-  entrypoint:
-    description: The Dart entrypoint file
-    required: true
-    default: .
   globe-token:
     description: "Authentication token for Globe CLI"
     required: true
