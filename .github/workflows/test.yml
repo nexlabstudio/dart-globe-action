@@ -14,7 +14,6 @@ jobs:
       - name: Deploy using Dart Globe
         uses: mastersam07/dart-globe-action@v0.21.1
         with:
-          entrypoint: build/bin/server.dart
           globe-token: ${{ secrets.GLOBE_TOKEN }}
-          project-id: polls_api-7efe
-          org-id: a3253ac5-6748-4abc-8fee-78018dc770a1
+          project-id: ${{ secrets.GLOBE_PROJECT_ID }}
+          org-id: ${{ secrets.GLOBE_ORG_ID }}
