@@ -14,6 +14,6 @@ jobs:
       - name: Deploy using Dart Globe
         uses: mastersam07/dart-globe-action@v0.21.1
         with:
-          globe-token: ${{ secrets.GLOBE_TOKEN }}
+          globe-token: ${{ secrets.GLOBE_ACTION_TOKEN }}
           project-id: ${{ secrets.GLOBE_PROJECT_ID }}
           org-id: ${{ secrets.GLOBE_ORG_ID }}
