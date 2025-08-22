@@ -17,6 +17,12 @@ inputs:
   globe-token:
     description: "Authentication token for Globe CLI"
     required: true
+  project-id:
+    description: "Set the Project ID/Slug used by Globe"
+    required: true
+  org-id:
+    description: "Set the Organization ID/Slug used by Globe"
+    required: true
 
 runs:
   using: "composite"
@@ -42,10 +48,10 @@ runs:
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy
+      run: globe deploy --project=${{ inputs.project-id}} --org=${{ inputs.org-id}}
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --prod
+      run: globe deploy --prod --project=${{ inputs.project-id}} --org=${{ inputs.org-id}}
