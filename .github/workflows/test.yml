@@ -14,3 +14,5 @@ jobs:
         with:
           entrypoint: build/bin/server.dart
           globe-token: ${{ secrets.GLOBE_TOKEN }}
+          project-id: polls_api-7efe
+          org-id: a3253ac5-6748-4abc-8fee-78018dc770a1
