@@ -112,6 +112,8 @@ build:
 | `globe_token`      | Authentication token for Dart Globe CLI  | Yes      |         |
 | `environment`      | Env to deploy (preview or production)    | No       |`preview`|
 | `working-directory`| Directory containing globe.yaml          | No       | `.`     |
+| `project-id`       | Project ID/Slug used by Globe            | Yes      |         |
+| `org-id`           | Organization ID/Slug used by Globe       | Yes      |         |
 
 ## Example Usage
 
@@ -127,10 +129,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using Dart Globe
-        uses: mastersam07/dart-globe-action@v0.21
+        uses: mastersam07/dart-globe-action@master
         with:
-          globe_token: ${{ secrets.GLOBE_TOKEN }}
-          environment: production
+          globe-token: ${{ secrets.GLOBE_ACTION_TOKEN }}
+          project-id: ${{ secrets.GLOBE_PROJECT_ID }}
+          org-id: ${{ secrets.GLOBE_ORG_ID }}
 ```
 
 ## Example globe.yaml for Different Project Types
