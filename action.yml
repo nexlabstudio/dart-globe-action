@@ -48,10 +48,10 @@ runs:
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --project=${{ inputs.project-id}} --org=${{ inputs.org-id}}
+      run: globe deploy --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --prod --project=${{ inputs.project-id}} --org=${{ inputs.org-id}}
+      run: globe deploy --prod --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs
