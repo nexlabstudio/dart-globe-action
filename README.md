@@ -129,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy using Dart Globe
-        uses: mastersam07/dart-globe-action@master
+        uses: mastersam07/dart-globe-action@v0.22
         with:
           globe-token: ${{ secrets.GLOBE_ACTION_TOKEN }}
           project-id: ${{ secrets.GLOBE_PROJECT_ID }}

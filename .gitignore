@@ -1,3 +1,4 @@
 .github/
 server.dart
 schema.json
+globe.yaml
