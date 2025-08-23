@@ -48,10 +48,32 @@ runs:
       shell: bash
       if: ${{ inputs.environment == 'preview' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs
+      run: |
+        # Capture output and check for failure
+        output=$(globe deploy --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs 2>&1)
+        echo "$output"
+        
+        # Check if deployment failed and exit appropriately
+        if echo "$output" | grep -q "Deployment failed"; then
+          echo "❌ Deployment failed - exiting with error code"
+          exit 1
+        fi
+        
+        echo "✅ Deployment completed successfully"
 
     - name: Deploy to Production
       shell: bash
       if: ${{ inputs.environment == 'production' }}
       working-directory: ${{ inputs.working-directory }}
-      run: globe deploy --prod --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs
+      run: |
+        # Capture output and check for failure
+        output=$(globe deploy --prod --project=${{ inputs.project-id}} --org=${{ inputs.org-id}} --logs 2>&1)
+        echo "$output"
+        
+        # Check if deployment failed and exit appropriately
+        if echo "$output" | grep -q "Deployment failed"; then
+          echo "❌ Deployment failed - exiting with error code"
+          exit 1
+        fi
+        
+        echo "✅ Deployment completed successfully"
